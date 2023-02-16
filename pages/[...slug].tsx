@@ -64,6 +64,12 @@ export async function getStaticProps(
     }
   }
 
+   if (type === "node--page") {
+      params = {
+        include: "uid,field_para, field_para.field_image_para",
+      }
+    }
+
   const resource = await drupal.getResourceFromContext<DrupalNode>(
     path,
     context,
