@@ -14,3 +14,4 @@ A simple starter for building your site with Next.js and Drupal.
 
 See https://next-drupal.org
 # nextjs
+# nextjs
