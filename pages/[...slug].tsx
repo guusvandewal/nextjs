@@ -78,7 +78,6 @@ export async function getStaticProps(
       withAuth: true,
     },
   )
-  console.log(resource.status)
 
   // At this point, we know the path exists and it points to a resource.
   // If we receive an error, it means something went wrong on Drupal.
