@@ -1,12 +1,12 @@
-import { DrupalClient } from "next-drupal";
-import Image from "next/image";
-import { absoluteUrl } from "../lib/utils";
+import { DrupalClient } from "next-drupal"
+import Image from "next/image"
+import { absoluteUrl } from "../lib/utils"
 
 const drupal = new DrupalClient("https://backend.guusvandewal.nl", {
   debug: true,
-});
+})
 export default function Test({ articles, image }) {
-  console.log(image);
+  console.log(image)
   return (
     <div>
       {articles?.length
@@ -43,28 +43,28 @@ export default function Test({ articles, image }) {
           )
         : null}
     </div>
-  );
+  )
 }
 
 export async function getStaticProps(context) {
   const articles = await drupal.getResourceCollectionFromContext(
     "node--portfolio_item",
     context
-  );
+  )
   const images = await drupal.getResourceCollectionFromContext(
     "file--file",
     context
-  );
+  )
 
   const image = await drupal.getResource(
     "file--file",
     "0655df6c-1edd-4627-817c-74717abf8ddf"
-  );
+  )
 
   return {
     props: {
       articles,
       image,
     },
-  };
+  }
 }

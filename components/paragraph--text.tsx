@@ -1,4 +1,4 @@
-import { ParagraphProps } from "components/paragraph";
+import { ParagraphProps } from "components/paragraph"
 export function ParagraphText({ paragraph, ...props }: ParagraphProps) {
   return (
     <section>
@@ -14,5 +14,5 @@ export function ParagraphText({ paragraph, ...props }: ParagraphProps) {
         />
       )}
     </section>
-  );
+  )
 }

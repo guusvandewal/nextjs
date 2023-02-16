@@ -1,13 +1,13 @@
-import Image from "next/image";
-import { DrupalNode } from "next-drupal";
+import Image from "next/image"
+import { DrupalNode } from "next-drupal"
 
-import { absoluteUrl, formatDate } from "lib/utils";
-import { Paragraph } from "components/paragraph";
+import { absoluteUrl, formatDate } from "lib/utils"
+import { Paragraph } from "components/paragraph"
 
 interface NodePortfolioProps {
-  node: DrupalNode;
+  node: DrupalNode
 }
-let id;
+let id
 export function NodePortfolio({ node, ...props }: NodePortfolioProps) {
   return (
     <article {...props}>
@@ -53,8 +53,8 @@ export function NodePortfolio({ node, ...props }: NodePortfolioProps) {
       )}
 
       {node.field_paragrafen.map((paragraph) => {
-        return <Paragraph key={paragraph.id} paragraph={paragraph} />;
+        return <Paragraph key={paragraph.id} paragraph={paragraph} />
       })}
     </article>
-  );
+  )
 }

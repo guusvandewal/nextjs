@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { DrupalNode } from "next-drupal";
+import Image from "next/image"
+import { DrupalNode } from "next-drupal"
 
-import { absoluteUrl, formatDate } from "lib/utils";
-import { Paragraph } from "components/paragraph";
+import { absoluteUrl, formatDate } from "lib/utils"
+import { Paragraph } from "components/paragraph"
 
 interface NodePageProps {
-  node: DrupalNode;
+  node: DrupalNode
 }
 export function NodePage({ node, ...props }: NodePageProps) {
   return (
@@ -52,8 +52,8 @@ export function NodePage({ node, ...props }: NodePageProps) {
       )}
 
       {node.field_para.map((paragraph) => {
-        return <Paragraph key={paragraph.id} paragraph={paragraph} />;
+        return <Paragraph key={paragraph.id} paragraph={paragraph} />
       })}
     </article>
-  );
+  )
 }

@@ -1,15 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import { DrupalNode } from "next-drupal";
+import Image from "next/image"
+import Link from "next/link"
+import { DrupalNode } from "next-drupal"
 
-import { absoluteUrl, formatDate } from "lib/utils";
+import { absoluteUrl, formatDate } from "lib/utils"
 
 interface NodePortfolioTeaserProps {
-  node: DrupalNode;
+  node: DrupalNode
 }
 
 export function NodePortfolioTeaser({
-
   node,
   ...props
 }: NodePortfolioTeaserProps) {
@@ -55,5 +54,5 @@ export function NodePortfolioTeaser({
         </svg>
       </Link>
     </article>
-  );
+  )
 }
