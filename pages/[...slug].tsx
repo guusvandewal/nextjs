@@ -75,7 +75,7 @@ export async function getStaticProps(
     context,
     {
       params,
-      withAuth: true,
+      withAuth: context.preview,
     },
   )
 
