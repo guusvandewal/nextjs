@@ -8,13 +8,15 @@ import { NodePortfolioTeaser } from "../components/node--portfolio--teaser";
 import { NodePageTeaser } from "../components/node--page--teaser";
 
 interface IndexPageProps {
-    portfolioNodes: DrupalNode[];
-    pageNodes: DrupalNode[];
+  portfolioNodes: DrupalNode[];
+  pageNodes: DrupalNode[];
+  blogNodes: DrupalNode[];
 }
 
 export default function IndexPage({
   portfolioNodes,
   pageNodes,
+  blogNodes,
 }: IndexPageProps) {
   return (
     <Layout>
@@ -25,6 +27,21 @@ export default function IndexPage({
           content="A Guus.js site powered by a Drupal backend."
         />
       </Head>
+
+      <div>
+        <h2 className="mb-10 text-6xl font-black">Latest Blog.</h2>
+        {blogNodes?.length ? (
+          blogNodes.map((node) => (
+            <div key={node.id}>
+              <NodePageTeaser node={node} />
+              <hr className="my-20" />
+            </div>
+          ))
+        ) : (
+          <p className="py-4">No nodes found</p>
+        )}
+      </div>
+
       <div>
         <h1 className="mb-10 text-6xl font-black">Latest Articles.</h1>
         {portfolioNodes?.length ? (
@@ -38,6 +55,7 @@ export default function IndexPage({
           <p className="py-4">No nodes found</p>
         )}
       </div>
+
       <div>
         <h2 className="mb-10 text-6xl font-black">Latest Pages.</h2>
         {pageNodes?.length ? (
@@ -84,10 +102,24 @@ export async function getStaticProps(
     }
   );
 
+  const blogNodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
+    "node--blog_item",
+    context,
+    {
+      params: {
+        "filter[status]": 1,
+        "fields[node--page]": "title,path,uid,created,field_intro",
+        include: "uid,field_code",
+        sort: "-created",
+      },
+    }
+  );
+
   return {
     props: {
       portfolioNodes,
       pageNodes,
+      blogNodes,
     },
   };
 }

@@ -6,9 +6,9 @@ import { drupal } from "lib/drupal";
 import { NodePortfolio } from "components/node--portfolio";
 import { NodePage } from "components/node--page";
 import { Layout } from "components/layout";
+import {NodeBlog} from "../components/node--blog";
 
-const RESOURCE_TYPES = ["node--page", "node--portfolio_item"];
-
+const RESOURCE_TYPES = ["node--page", "node--portfolio_item", "node--blog_item"];
 
 interface NodeTeaserProps {
   resource: DrupalNode;
@@ -27,6 +27,9 @@ export default function NodeTeaser({ resource }: NodeTeaserProps) {
       {resource.type === "node--portfolio_item" && (
         <NodePortfolio node={resource} />
       )}
+      {resource.type === "node--blog_item" && (
+        <NodeBlog node={resource} />
+      )}
     </Layout>
   );
 }
@@ -40,7 +43,7 @@ export async function getStaticPaths(context): Promise<GetStaticPathsResult> {
 
 export async function getStaticProps(
   context
-): Promise<GetStaticPropsResult<NodePageProps>> {
+): Promise<GetStaticPropsResult<NodeTeaserProps>> {
   const path = await drupal.translatePathFromContext(context);
   if (!path) {
     return {
@@ -50,20 +53,25 @@ export async function getStaticProps(
 
   const type = path.jsonapi.resourceName;
   let params = {};
-  let images = {};
   if (type === "node--portfolio_item") {
     params = {
-      include: "field_full_image,uid,field_paragrafen, field_paragrafen.field_image_para",
+      include:
+        "field_full_image,uid,field_paragrafen, field_paragrafen.field_image_para", //note the chaining for fetching related images
     };
+  }
 
+  if (type === "node--blog_item") {
+    params = {
+      include:
+        "uid,field_code, field_code.field_image_para",
+    };
   }
 
   const resource = await drupal.getResourceFromContext<DrupalNode>(
     path,
     context,
     {
-      params
-
+      params,
     }
   );
 
