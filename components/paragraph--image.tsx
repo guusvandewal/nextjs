@@ -8,8 +8,8 @@ export function ParagraphImage({ paragraph: { field_image_para }, ...props }) {
       {
         <Image
           src={absoluteUrl(field_image_para.uri.url)}
-          width={768}
-          height={400}
+          width={1980}
+          height={1019}
           alt={field_image_para.resourceIdObjMeta.alt}
           priority
         />

@@ -25,8 +25,8 @@ export function NodePortfolio({ node, ...props }: NodePortfolioProps) {
         <figure>
           <Image
             src={absoluteUrl(node.field_full_image.uri.url)}
-            width={768}
-            height={400}
+            width={1440}
+            height={1024}
             alt={node.field_full_image.resourceIdObjMeta.alt}
             priority
           />

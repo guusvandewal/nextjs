@@ -30,8 +30,8 @@ export function NodePortfolioTeaser({
         <figure className="my-4">
           <Image
             src={absoluteUrl(node.field_full_image.uri.url)}
-            width={768}
-            height={480}
+            width={1440}
+            height={1024}
             alt={node.field_full_image.resourceIdObjMeta.alt}
           />
         </figure>
