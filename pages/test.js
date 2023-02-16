@@ -5,14 +5,12 @@ import { absoluteUrl } from "../lib/utils"
 const drupal = new DrupalClient("https://backend.guusvandewal.nl", {
   debug: true,
 })
-export default function Test({ articles, image }) {
-  console.log(image)
+export default function Test({ articles, image, menu }) {
   return (
     <div>
-      {articles?.length
-        ? articles.map(
+      {menu?.length
+        ? menu.map(
             (node) => (
-              console.log(node.field_paragrafen),
               (
                 <div key={node.id}>
                   <h1>{node.title}</h1>
@@ -24,19 +22,7 @@ export default function Test({ articles, image }) {
                   <div
                     dangerouslySetInnerHTML={{ __html: node.field_paragrafen }}
                   ></div>
-                  {
-                    (node.field_paragrafen.type = "paragraph--full_image" && (
-                      <figure>
-                        <Image
-                          src={absoluteUrl(image?.uri?.url)}
-                          width={768}
-                          height={400}
-                          alt="test"
-                          priority
-                        />
-                      </figure>
-                    ))
-                  }
+
                 </div>
               )
             )
@@ -61,10 +47,21 @@ export async function getStaticProps(context) {
     "0655df6c-1edd-4627-817c-74717abf8ddf"
   )
 
+  const id = "07464e9f-9221-4a4f-b7f2-01389408e6c8"
+
+  const menu = await drupal.getResourceCollectionFromContext("node--portfolio_item", {
+    context,
+    withAuth: {
+      clientId: process.env.DRUPAL_CLIENT_ID,
+      clientSecret: process.env.DRUPAL_CLIENT_SECRET,
+    },
+  })
+
   return {
     props: {
       articles,
       image,
+      menu,
     },
   }
 }

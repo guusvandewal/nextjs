@@ -27,7 +27,7 @@ export default function IndexPage({
           content="A Guus.js site powered by a Drupal backend."
         />
       </Head>
-
+{/*
       <div>
         <h2 className="mb-10 text-6xl font-black">Latest Blog.</h2>
         {blogNodes?.length ? (
@@ -40,7 +40,7 @@ export default function IndexPage({
         ) : (
           <p className="py-4">No nodes found</p>
         )}
-      </div>
+      </div>*/}
 
       <div>
         <h1 className="mb-10 text-6xl font-black">Latest Articles.</h1>

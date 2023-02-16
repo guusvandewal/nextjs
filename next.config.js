@@ -10,12 +10,19 @@ const nextConfig = {
         pathname: '**',
       },
 
-      /*{
+      {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
+        hostname: 'guus.local',
+        port: '443',
         pathname: '**',
-      },*/
+      },
+
+      {
+        protocol: 'https',
+        hostname: 'backend.guusvandewal.nl',
+        port: '443',
+        pathname: '**',
+      },
     ],
   },
   async headers() {

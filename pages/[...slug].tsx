@@ -75,7 +75,10 @@ export async function getStaticProps(
     context,
     {
       params,
-      withAuth: context.preview,
+      withAuth: {
+        clientId: process.env.DRUPAL_CLIENT_ID,
+        clientSecret: process.env.DRUPAL_CLIENT_SECRET,
+      },
     },
   )
 
