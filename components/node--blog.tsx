@@ -4,11 +4,10 @@ import { DrupalNode } from "next-drupal";
 import { absoluteUrl, formatDate } from "lib/utils";
 import { Paragraph } from "components/paragraph";
 
-interface NodePortfolioProps {
+interface NodeBlogProps {
   node: DrupalNode;
 }
-let id;
-export function NodePortfolio({ node, ...props }: NodePortfolioProps) {
+export function NodeBlog({ node, ...props }: NodeBlogProps) {
   return (
     <article {...props}>
       <h1 className="mb-4 text-6xl font-black leading-tight">{node.title}</h1>
@@ -52,7 +51,7 @@ export function NodePortfolio({ node, ...props }: NodePortfolioProps) {
         />
       )}
 
-      {node.field_paragrafen.map((paragraph) => {
+      {node.field_code.map((paragraph) => {
         return <Paragraph key={paragraph.id} paragraph={paragraph} />;
       })}
     </article>
