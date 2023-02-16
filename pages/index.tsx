@@ -1,16 +1,16 @@
-import Head from "next/head";
-import { GetStaticPropsResult } from "next";
-import { DrupalNode } from "next-drupal";
+import Head from "next/head"
+import { GetStaticPropsResult } from "next"
+import { DrupalNode } from "next-drupal"
 
-import { drupal } from "lib/drupal";
-import { Layout } from "components/layout";
-import { NodePortfolioTeaser } from "../components/node--portfolio--teaser";
-import { NodePageTeaser } from "../components/node--page--teaser";
+import { drupal } from "lib/drupal"
+import { Layout } from "components/layout"
+import { NodePortfolioTeaser } from "../components/node--portfolio--teaser"
+import { NodePageTeaser } from "../components/node--page--teaser"
 
 interface IndexPageProps {
-  portfolioNodes: DrupalNode[];
-  pageNodes: DrupalNode[];
-  blogNodes: DrupalNode[];
+  portfolioNodes: DrupalNode[]
+  pageNodes: DrupalNode[]
+  blogNodes: DrupalNode[]
 }
 
 export default function IndexPage({
@@ -70,7 +70,7 @@ export default function IndexPage({
         )}
       </div>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps(
@@ -86,7 +86,7 @@ export async function getStaticProps(
       include: "field_full_image,uid,field_paragrafen",
       sort: "-created",
     },
-  });
+  })
 
   const pageNodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--page",
@@ -100,7 +100,7 @@ export async function getStaticProps(
         sort: "-created",
       },
     }
-  );
+  )
 
   const blogNodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--blog_item",
@@ -113,7 +113,7 @@ export async function getStaticProps(
         sort: "-created",
       },
     }
-  );
+  )
 
   return {
     props: {
@@ -121,5 +121,5 @@ export async function getStaticProps(
       pageNodes,
       blogNodes,
     },
-  };
+  }
 }

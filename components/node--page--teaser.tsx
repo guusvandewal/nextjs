@@ -1,18 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import { DrupalNode } from "next-drupal";
+import Image from "next/image"
+import Link from "next/link"
+import { DrupalNode } from "next-drupal"
 
-import { absoluteUrl, formatDate } from "lib/utils";
+import { absoluteUrl, formatDate } from "lib/utils"
 
 interface NodePageTeaserProps {
-  node: DrupalNode;
+  node: DrupalNode
 }
 
-export function NodePageTeaser({
-
-  node,
-  ...props
-}: NodePageTeaserProps) {
+export function NodePageTeaser({ node, ...props }: NodePageTeaserProps) {
   return (
     <article {...props}>
       <Link href={node.path.alias} className="no-underline hover:text-blue-600">
@@ -55,5 +51,5 @@ export function NodePageTeaser({
         </svg>
       </Link>
     </article>
-  );
+  )
 }

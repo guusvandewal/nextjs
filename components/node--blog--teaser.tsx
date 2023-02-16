@@ -1,17 +1,13 @@
-import Link from "next/link";
-import { DrupalNode } from "next-drupal";
+import Link from "next/link"
+import { DrupalNode } from "next-drupal"
 
-import { formatDate } from "lib/utils";
+import { formatDate } from "lib/utils"
 
 interface NodeBlogTeaserProps {
-  node: DrupalNode;
+  node: DrupalNode
 }
 
-export function NodeBlogTeaser({
-
-  node,
-  ...props
-}: NodeBlogTeaserProps) {
+export function NodeBlogTeaser({ node, ...props }: NodeBlogTeaserProps) {
   return (
     <article {...props}>
       <Link href={node.path.alias} className="no-underline hover:text-blue-600">
@@ -45,5 +41,5 @@ export function NodeBlogTeaser({
         </svg>
       </Link>
     </article>
-  );
+  )
 }

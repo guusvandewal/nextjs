@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { DrupalNode } from "next-drupal";
+import Image from "next/image"
+import { DrupalNode } from "next-drupal"
 
-import { absoluteUrl, formatDate } from "lib/utils";
-import { Paragraph } from "components/paragraph";
+import { absoluteUrl, formatDate } from "lib/utils"
+import { Paragraph } from "components/paragraph"
 
 interface NodeBlogProps {
-  node: DrupalNode;
+  node: DrupalNode
 }
 export function NodeBlog({ node, ...props }: NodeBlogProps) {
   return (
@@ -52,8 +52,8 @@ export function NodeBlog({ node, ...props }: NodeBlogProps) {
       )}
 
       {node.field_code.map((paragraph) => {
-        return <Paragraph key={paragraph.id} paragraph={paragraph} />;
+        return <Paragraph key={paragraph.id} paragraph={paragraph} />
       })}
     </article>
-  );
+  )
 }
